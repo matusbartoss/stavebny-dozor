@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stavebný dozor - Tunel Sitina</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #eef2f3; }
+    header { background: url('img/sitina-tunnel.jpg') no-repeat center center; background-size: cover; color: white; text-align: center; padding: 100px 20px; position: relative; }
+    header::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0; }
+    header h1, header p { position: relative; z-index: 1; }
+    nav { background-color: #34495e; display: flex; justify-content: center; flex-wrap: wrap; }
+    nav a { color: white; padding: 14px 20px; text-decoration: none; display: block; transition: background-color 0.3s; cursor: pointer; }
+    nav a:hover { background-color: #1abc9c; }
+    section { max-width: 900px; margin: auto; background: white; padding: 30px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: none; }
+    section.active { display: block; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .gallery img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+    form label { display: block; margin-top: 10px; font-weight: bold; }
+    form input, form textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
+    form button { margin-top: 10px; background-color: #1abc9c; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+    form button:hover { background-color: #16a085; }
+    footer { background-color: #2c3e50; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('section');
+      
+      function showSection(id) {
+        sections.forEach(sec => sec.classList.remove('active'));
+        const target = document.querySelector(id);
+        if (target) target.classList.add('active');
+      }
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          showSection(href);
+        });
+      });
+      showSection('#sluzby'); // Default section
+
+      const form = document.querySelector('form');
+      form.setAttribute('action', 'https://formspree.io/f/your-form-id');
+      form.setAttribute('method', 'POST');
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Stavebný dozor Svorad Polony</h1>
+    <p>Profesionálny dohľad nad výstavbou tunela Sitina a ďalších stavieb</p>
+  </header>
+  <nav>
+    <a href="#sluzby">Služby</a>
+    <a href="#projekty">Referencie</a>
+    <a href="#galeria">Galéria</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <section id="sluzby">
+    <h2>Služby</h2>
+    <p>Poskytujem odborný stavebný dozor, kontrolu kvality stavieb, konzultácie a technické poradenstvo pre tunely, mosty a veľké projekty.</p>
+  </section>
+  <section id="projekty">
+    <h2>Referencie</h2>
+    <p>Ukážky zrealizovaných stavieb vrátane tunela Sitina v Bratislave, ktoré som dohliadal, s dôrazom na kvalitu a dodržiavanie noriem.</p>
+  </section>
+  <section id="galeria">
+    <h2>Galéria projektov</h2>
+    <div class="gallery">
+      <img src="img/project1.jpg" alt="Projekt 1">
+      <img src="img/project2.jpg" alt="Projekt 2">
+      <img src="img/project3.jpg" alt="Projekt 3">
+    </div>
+  </section>
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <form>
+      <label for="name">Meno:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Správa:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit">Odoslať</button>
+    </form>
+    <p>Email: <a href="mailto:stavebnyporadca@example.com">stavebnyporadca@example.com</a></p>
+    <p>Telefón: +421 900 123 456</p>
+  </section>
+  <footer>
+    <p>&copy; 2025 Stavebný dozor</p>
+  </footer>
+</body>
+</html>
